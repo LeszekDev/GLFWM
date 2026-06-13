@@ -96,6 +96,7 @@ Look at [imgui/README.md](imgui/README.md) if you want to setup multithreaded Im
 - **When are Window events executed?** Each window is tied to the thread that created it. When that thread does glfwmPollEvents(), every event related to every window tied to the current thread gets processed. This means that the events are safely separated across different threads. Monitor Event Callbacks are also tied to the thread that registered the callback, and callbacks process those events when glfwmPollEvents() on their tied thread is called.
 - **Some callbacks are not running for me.** Other than the requirement to run glfwmPollEvents() on the thread where window has been created, you also need to do glfwmInit() on that thread. glfwmInit() sets up thread data and without it the glfwmPollEvents() just won't work.
 - **Are there any FPS drops with it?** Yes, although they are mostly noticeable only with the higher FPS counts  (like 500+). This is mainly Development tool, but the drops aren't/shouldn't be as bad as to make the games unplayable and untestable. Drops are caused by the scheduling mechanism meanwhile games on main thread execute GLFW functions immediately. Should be fine for testing purposes, and for production you can always just put it on main thread and enable passthrough mode (same as directly running glfw functions).
+- **Will Vulkan be supported in future?** Library is still in the beta, but the plans are to also support Vulkan.
 
 ## License
 
